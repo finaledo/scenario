@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scenario Generator!</title>
+</head>
+<body>
+    <h1>Scenario Generator</h1>
+    <p>hii this is a pretty simple project i made :></p>
+    <input type="text" id="name1" value="Name A" placeholder="Name A">
+    <input type="text" id="name2" value="Name B" placeholder="Name B"><br><br>
+    <button onclick="create()">Create Scenario</button>
+    <input type="text" id="amount" placeholder="Amount..." value="1">
+    <p id="scenario"></p>
+    <select id="scenarioType">
+        <option value="1person">1 Person Scenario</option>
+        <option value="2person" selected>2 People Scenario</option>
+        <option value="both">Both</option>
+    </select>
+</body>
+<script>
+    const correctPassword = "idk123456"; 
+        
+        // Ask the user for the password
+        let userInput = prompt("Please enter the password to access this site:");
+        
+        // Check if the password is correct
+        if (userInput !== correctPassword) {
+            alert("Incorrect password! Access denied.");
+            // Redirect them away or clear the page
+            window.location.href = "https://www.google.com"; 
+        }
+    scenarios = [
+        "(name1) and (name2) are best friends who go on an adventure together.",
+        "(name1) and (name2) are rivals competing for the same goal.",
+        "(name1) and (name2) are siblings who discover a hidden family secret.",
+        "(name1) and (name2) are strangers who meet by chance and form an unexpected bond.",
+        "(name1) and (name2) are co-workers who team up to solve a mystery at their office.",
+        "(name1) uses their powers to save (name2)'s life from immediate danger.",
+        "(name1) prepares to use their powers to fight (name2) in order to defend themselves from potential harm.",
+        "(name1) models for (name2)'s art project.",
+        "(name1) gives (name2) an extra ticket to an event.",
+        "(name1) retrieves (name2)'s belongings from a thief.",
+        "(name1) and (name2) prepare and share a meal together.",
+        "(name1) finds (name2) at a gravestone.",
+        "(name1) shelters (name2) from enemies.",
+        "(name1) owes (name2) a favor.",
+        "(name2) draws (name1) really good while (name1) tries to draw (name2) but sucked at it.",
+        "(name2) finds out more about (name1).",
+        "(name1) helps (name2). (how the hell did you get such a boring scenario? lol)",
+        "(name1) and (name2) pretend to be in a relationship for the purpose of an undercover mission.",
+        "(name1) and (name2) are trapped in a time loop and must work together to break free.",
+        "(name1) and (name2) are stranded on a deserted island and must find a way to survive.",
+        "(name1) and (name2) are transported to a fantasy world and must find their way back home.",
+        "(name1) and (name2) are caught in a supernatural event that changes their lives forever.",
+        "(name1) and (name2) are forced to confront their pasts when they are reunited after many years apart.",
+        "(name1) wants a cat. (name2) buys a kitty-ear headband and tries to be cute.",
+        "Every year for (name1)'s birthday, (name2) goes above and beyond in terms of gifts, planning a birthday party and just generally making sure (name1) has the best day ever. This year, (name1) decides to return the favor by planning a whole day for (name2). It doesn't go exactly as (name1) planned but they include lots of things that they know (name2) likes and tries hard to make the day amazing. (name2) doesn't care that it doesn't go perfectly, they just revel in how much they love (name1).",
+        "Whenever they play Dungeons and Dragons, (name1) always tries to seduce (name2)'s character.",
+        "(name1) and (name2) are in a relationship and have a fight. They both say things they don't mean and end up breaking up. They both regret it but are too stubborn to apologize first.",
+        "(name1) treats (name2) like a fictional crush that became reality.",
+        "(name1) has never seen (name2) in their life, yet has somehow formed an extreme hatred of them.",
+        "(name1) constantly asks if (name2) has games on their phone. (name2) does not have games on their phone.",
+        "(name2) is sick of (name1) forgetting to put away the dishes.",
+        "(name1) is absolutely feral, and (name2) loves that about them.",
+        "(name2) cannot get enough of (name1)'s violent tendencies.",
+        "(name2) always asks (name1) the most unanswerable questions.",
+        "If (name2) had to choose between (name1) and $1, they would choose the money.",
+        "(name2) is a gang leader hiding from the law in (name1)'s house and is completely at (name1)'s mercy.",
+        "(name1) tries to bake cookies for (name2), but (name2) is pretty sure that those 'cookies' are a biohazard.",
+        "(name2) and (name1) play an MMO together. (name2) is the tank and (name1) is the healer.",
+        "(name1) has offended (name2) in some way but doesn't realize it.",
+        "(name1) is too nervous to approach (name2), and only admires them from afar.",
+        "(name1) and (name2) got handcuffed together and lost the key.",
+        "(name1) has memory loss, and has forgotten all about (name2).",
+        "(name2) notices (name1) hanging out with someone else more than them.",
+        "(name1) is dying in (name2)'s arms, and (name2) can't do anything about it.",
+        "(name2) would sell their soul to turn (name1) into a fox.",
+        "If a genie came to grant three wishes, (name1)'s first wish would be to give their other two wishes to (name2).",
+        "(name1) takes pictures of everything. (name2) hates being photographed.",
+        "(name2) and (name1) in matching cosplays.",
+        "(name2) disappears. (name1) doesn't know why they left, but they never stop looking.",
+        "(name1) and (name2) are in a long-distance relationship and have to find creative ways to stay connected.",
+        "(name1) and (name2) are forced to work together on a project, despite their dislike for each other.",
+        "(name1) and (name2) are caught in a natural disaster and must rely on each other to survive.",
+        "(name1) and (name2) are trapped in an elevator together.",
+        "(name1) and (name2) are stranded in a foreign country and have to navigate the language barrier together.",
+        "(name1) and (name2) are stuck in a traffic jam for hours and end up having a deep conversation about their hopes and dreams.",
+        "(name1) and (name2) are forced to share a hotel room during a business trip and end up bonding over their shared discomfort.",
+        "(name1) and (name2) are caught in a snowstorm while hiking and have to find shelter together.",
+        "(name1) and (name2) are trapped in a burning building and have to work together to escape.",
+        "(name1) and (name2) are stranded on a boat in the middle of the ocean and have to find a way to signal for help.",
+        "(name2) has shower thoughts that always drive (name1) crazy.",
+        "(name1) hangs out with (name2) to avoid thinking about something else.",
+        "(name1) needs a new outfit or haircut, and (name2) is here to help. (or make it worse?)",
+        "(name1) is having trouble hearing or seeing, (name2) helps (or hinders).",
+        "(name1) is trying to study or work, but (name2) is extremely bored.",
+        "(name1) is injured, and is trying to hide it from (name2).",
+        "(name1) is trying to get (name2) to do something, but (name2) is being stubborn.",
+        "(name1) shows up to a blind date... Who turns out to be (name2).",
+        "(name1) tries to sneak up on (name2)...",
+        "(name1) tries to sneak up on (name2) and fails miserably.",
+        "(name1) is scared of the thunder and (name2) tries to calm them down during an particularly heavy storm.",
+        "Imagine (name1) and (name2) getting married (or getting engaged) and, after being together for a long time, sticking to their decision to not have children (neither biological nor adopted). But they are still happy because they know that they do not need to raise a family in order to be in a happy and healthy relationship.",
+        "(name1) is a talented pianist who meets (name2) and offers to teach them how to play, unaware that (name2) is already an equally talented pianist themselves. (name2) accepts so they have an excuse to spend time with (name1) but gets discovered one day when (name1) walks in on (name2) practicing some high-level music.",
+        "(name1) and (name2) are both trying to get the same job, and they end up competing against each other in a series of challenges.",
+        "(name1) forces (name2) to wear a maid outfit.",
+        "(name1) reveals a dark secret about themselves to (name2).",
+        "(name1) tries to cook food for (name2) but burns it.",
+        "(name1) realizes it was all just a dream, and (name2) was never real.",
+        "Despite (name1)'s hatred for (name2), (name1) saves (name2)'s life.",
+    ];
+    personScenarios = [
+        "(name1) discovers they have a hidden talent that changes their life.",
+        "(name1) faces a difficult decision that tests their values and beliefs.",
+        "(name1) embarks on a journey of self-discovery and personal growth.",
+        "(name1) confronts a fear or phobia that has been holding them back.",
+        "(name1) receives an unexpected opportunity that challenges their comfort zone.",
+        "(name1) uncovers a family secret that reshapes their understanding of their past.",
+        "(name1) navigates a major life change, such as moving to a new city or starting a new job.",
+        "(name1) forms an unlikely friendship with someone from a different background.",
+        "(name1) overcomes a significant obstacle to achieve a long-held dream.",
+        "(name1) learns a valuable lesson from a mentor or role model.",
+        "(name1) likes to set things on fire.",
+        "(name1) is a cat person.",
+        "(name1) can kill you in an instant if deserved.",
+        "(name1) blows up pancakes with their bare hands.",
+        "(name1) will spend all day inside a buffet as long as the staff don't kick them out.",
+        "(name1) is smart but also very stupid.",
+        "(name1) is very willing to eat inedible things.",
+        "(name1) is always late for everything.",
+        "(name1) receives a letter addressed to them from ten years in the future.",
+        "(name1) wakes up in an unfamiliar place with no memory of how they got there.",
+        "(name1) discovers a room in their home they've never seen before.",
+        "(name1) finds a photograph of themself that they don't remember being taken.",
+        "(name1) is offered everything they've ever wanted, but at a cost.",
+        "(name1) accidentally uncovers a conspiracy.",
+        "(name1) realizes they've been followed for weeks.",
+        "(name1) finds a notebook containing detailed information about their life.",
+        "(name1) is given a chance to relive one day of their life.",
+        "(name1) learns something about themself that changes everything.",
+        "(name1) is banned from three separate establishments for completely different reasons.",
+        "(name1) wins an argument against themself in the shower.",
+        "(name1) accidentally becomes locally famous.",
+        "(name1) keeps finding money in increasingly strange places.",
+        "(name1) has a suspicious amount of confidence for someone who has no idea what they're doing.",
+        "(name1) is fueled entirely by spite.",
+        "(name1) should not be trusted with a shopping cart.",
+        "(name1) has been awake for 27 hours and thinks they're doing great.",
+        "(name1) is somehow both the smartest and dumbest person in the room.",
+        "(name1) could fix their problems, but chooses violence instead.",
+        "(name1) finds a clone of themself.",
+        "(name1) discovers they are legally dead.",
+        "(name1) owes a favor to something that isn't human.",
+        "(name1) has accidentally become the leader of a cult.",
+        "(name1) is haunted by an entity that mostly just annoys them.",
+        "(name1) finds a door that wasn't there yesterday.",
+        "(name1) is the only person who remembers a major event.",
+        "(name1) can suddenly hear everyone's thoughts and immediately regrets it.",
+        "(name1) keeps meeting alternate versions of themself.",
+        "(name1) realizes reality is held together with duct tape.",
+        "(name1) eats something that was definitely not food.",
+        "(name1) is no longer allowed near fireworks.",
+        "(name1) has a concerning amount of knowledge about one extremely specific topic.",
+        "(name1) is wanted in seven countries. They have never left their hometown.",
+        "(name1) somehow loses a fight against a chair.",
+        "(name1) tries to do something normally and fails spectacularly.",
+        "(name1) finds twenty dollars and immediately becomes a supervillain.",
+        "(name1) could solve the problem at any moment but finds it funnier not to.",
+        "(name1) has no survival instincts.",
+        "(name1) has been given responsibilities. This was a mistake.",
+        "(name1) keeps pressing buttons they were specifically told not to press.",
+        "(name1) has somehow adopted an animal that definitely should not be a pet.",
+        "(name1) refuses to elaborate.",
+        "(name1) accidentally starts a rumor about themself.",
+        "(name1) is the only person who can see a certain color, and it's driving them crazy.",
+        "(name1) has a secret obsession with something that seems completely normal.",
+        "(name1) is convinced they are a character in a video game.",
+        "(name1) believes that they are a good liar, but everyone can see through their lies.",
+        "(name1) has a habit of talking to inanimate objects.",
+        "(name1) is convinced that they are being followed by a mysterious figure.",
+        "(name1) really likes eating ice, to the point where they would buy iced drinks just for the ice.",
+        "(name1) has a collection of something that seems completely random to everyone else.",
+        "(name1) wakes up convinced that today is very important but can't remember why.",
+        "(name1) will never gonna give you up, never gonna let you down, and will never gonna run around and desert you.",
+        "(name1) can't recall their mother's name, nor will they use it if they do.",
+        "(name1) has a very specific phobia that makes no sense to anyone else.",
+        "(name1) is the only person who can hear a certain sound, and it's driving them crazy.",
+        "(name1) is the only person who can see a certain color, and it's driving them crazy.",
+        "(name1) knows something nobody else does.",
+        `"It's gonna be okay, (name1)."`,
+    ];
+    function create() {
+        let name1 = document.getElementById("name1").value;
+        let name2 = document.getElementById("name2").value;
+        let amount = parseInt(document.getElementById("amount").value);
+        let scenarioType = document.getElementById("scenarioType").value;
+
+        let scenarioText = "";
+        for (let i = 0; i < amount; i++) {
+            if(scenarioType === "1person") {
+                let randomScenario = personScenarios[Math.floor(Math.random() * personScenarios.length)];
+                if(Math.random() < 0.25) {
+                    randomScenario = randomScenario.replaceAll("(name1)", name2);
+                } else {
+                    randomScenario = randomScenario.replaceAll("(name1)", name1);
+                }
+                if(Math.random() < 0.25) {
+                    randomScenario = "(AU) " + randomScenario;
+                }
+                scenarioText += "<p>" + randomScenario + "</p>";
+            } else if(scenarioType === "2person") {
+                let randomScenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+                if(Math.random() < 0.25) {
+                    randomScenario = randomScenario.replaceAll("(name1)", name2).replaceAll("(name2)", name1);
+                } else {
+                    randomScenario = randomScenario.replaceAll("(name1)", name1).replaceAll("(name2)", name2);
+                }
+                if(Math.random() < 0.25) {
+                    randomScenario = "(AU) " + randomScenario;
+                }
+                scenarioText += "<p>" + randomScenario + "</p>";
+            } else if(scenarioType === "both") {
+                let randomScenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+                if(Math.random() < 0.25){
+                    randomScenario = personScenarios[Math.floor(Math.random() * personScenarios.length)];
+                }
+                if(Math.random() < 0.25) {
+                    randomScenario = randomScenario.replaceAll("(name1)", name2).replaceAll("(name2)", name1);
+                } else {
+                    randomScenario = randomScenario.replaceAll("(name1)", name1).replaceAll("(name2)", name2);
+                }
+                if(Math.random() < 0.25) {
+                    randomScenario = "(AU) " + randomScenario;
+                }
+                scenarioText += "<p>" + randomScenario + "</p>";
+            }
+        }
+
+        document.getElementById("scenario").innerHTML = scenarioText;
+    }
+</script>
+</html>
